@@ -1,0 +1,7 @@
+name = "GSEA"
+uuid = "4550f781-fadd-4ec9-99f0-081668358c4d"
+authors = ["Irene Robles Rebollo <irenerobles93@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
