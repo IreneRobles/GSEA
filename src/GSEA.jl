@@ -41,9 +41,9 @@ gseaDat <- gseaDat[!sapply(gseaDat$log2FoldChange, is.null), ]
 ranks <- gseaDat$log2FoldChange
 names(ranks) <- gseaDat$entrezgene_id
 
-load(paste0($codepath, "/Databases3/MSigDB/human_H_v5p2.rdata"))
-
-
+# This is where I have my MSigDB files, you can change it to the file where you store yours
+# They can be downloaded from the MSigDB site
+    
 pathwaysH <- read.gmt(paste0($codepath, "/Databases3/MSigDB/h.all.v6.2.entrez.gmt"))
 spli<- function(x){
     a = sub("HALLMARK_", "", x)
