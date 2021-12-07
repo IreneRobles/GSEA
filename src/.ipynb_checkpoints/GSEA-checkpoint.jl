@@ -5,6 +5,17 @@ using MSigDB
 using RCall
 
 
+function translate_to_mouse(genelist; symbolstotranslate = "Gene name", translatedsymbols = "Mouse gene name")
+    ort = MSigDB.mouse_human_ortologs()
+    #Only one to one ortologs
+    ort = ort[ort[!,"Mouse homology type"].=="ortholog_one2one", :]
+    genedict = Dict(ort[!,symbolstotranslate], ort[!,translatedsymbols] )
+    list =  [try genedict[split(ii, ".")[1]] catch; missing end for ii in genelist]
+    return list
+end
+
+
+
 function do_Hallmarks_GSEA(deseqtable; mouse_ensemblID = :ensembl_gene_id)
     
     deseqtable[!,:ensembl_gene_id] = deseqtable[!,mouse_ensemblID]
